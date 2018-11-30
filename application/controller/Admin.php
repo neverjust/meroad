@@ -30,11 +30,11 @@ class Admin extends Controller
     public function teacher()
     {
         if(!isset($_SESSION['admin'])) {
-            return msg('',1,'非法操作或未登录');
+            return msg('',2,'非法操作或未登录');
         }
 
         if (!isset($_POST['teacher_name'])) {
-            return msg('',1,'未传递参数');
+            return msg('',101,'未传递参数');
         }
 
         $teacher_name = $_POST['teacher_name'];
@@ -42,7 +42,7 @@ class Admin extends Controller
         $teacher = $this->Teachermodel->where('name',$teacher_name)->find();
 
         if (!$teacher) {
-            return msg('',1,'查无此辅导员');
+            return msg('',9,'查无此辅导员');
         }
 
         $questions = array();
@@ -66,7 +66,7 @@ class Admin extends Controller
     public function teachers()
     {
         if(!isset($_SESSION['admin'])) {
-            return msg('',1,'非法操作或未登录');
+            return msg('',3,'非法操作或未登录');
         }
 
         $teachers = $this->Teachermodel->select();
@@ -76,7 +76,7 @@ class Admin extends Controller
     public function downloads()
     {
         if(!isset($_SESSION['admin'])) {
-            return msg('',1,'非法操作或未登录');
+            return msg('',3,'非法操作或未登录');
         }
         $filename = "辅导员评测结果统计";
         $teachers = $this->Teachermodel->select();
@@ -117,10 +117,10 @@ class Admin extends Controller
     public function download()
     {
         if(!isset($_SESSION['admin'])) {
-            return msg('',1,'非法操作或未登录');
+            return msg('',2,'非法操作或未登录');
         }
         if (!isset($_GET['teacher'])) {
-            return msg("",1,"无参数");
+            return msg("",101,"无参数");
         }
         $name = $_GET['teacher'];
         $filename = "辅导员$name 评测结果统计";
@@ -129,7 +129,7 @@ class Admin extends Controller
 
         $objPHPExcel = new \PHPExcel();
         if (!$teacher) {
-            return msg("",1,"查无此辅导员");
+            return msg("",9,"查无此辅导员");
         }
         $students = $this->Stumodel->where('teacher_name',$name)->where('if_done',0)->column('name');
 
@@ -174,17 +174,6 @@ class Admin extends Controller
         $objWriter->save('php://output');
     }
 
-    
-
-    public function test()
-    {
-        $teacher = $this->Teachermodel->where('name','teacher1')->find();
-        for ($i=3; $i < 12; $i++) { 
-            $pro = $i-2;
-            echo $teacher["ques_$pro"];
-        }   
-    }
-
 
     private function download_header($filename)
     {
@@ -197,7 +186,7 @@ class Admin extends Controller
         header('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
         header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT'); // always modified
         header('Cache-Control: cache, must-revalidate'); // HTTP/1.1
-        header('Pragma: public'); // HTTP/1.0
+        header('Pragma: public'); // HTTP/1.012
     }
 }
 
