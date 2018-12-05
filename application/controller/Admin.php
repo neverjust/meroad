@@ -111,6 +111,7 @@ class Admin extends Controller
             $objPHPExcel->getActiveSheet()->setCellValue("D$n", $teacher['unfinished']);
             $n++;
         }
+        $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
         $objWriter->save('php://output');
     }
 
@@ -170,7 +171,7 @@ class Admin extends Controller
         $objPHPExcel->getActiveSheet()->setCellValue("B13",$stu_names);
 
 
-
+        $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
         $objWriter->save('php://output');
     }
 

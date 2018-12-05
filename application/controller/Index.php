@@ -15,7 +15,7 @@ class Index extends Controller
 {
     public function index()
     {
-        echo "1111";
+        echo phpinfo();
     }
 
 }
