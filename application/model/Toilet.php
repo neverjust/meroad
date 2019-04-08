@@ -11,7 +11,7 @@ namespace app\model;
 
 use think\Model;
 
-class Teacher extends Model
+class Toilet extends Model
 {
 
 }

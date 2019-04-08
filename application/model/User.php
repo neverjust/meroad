@@ -11,7 +11,7 @@ namespace app\model;
 
 use think\Model;
 
-class Stu extends Model
+class User extends Model
 {
 
 }
