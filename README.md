@@ -1,50 +1,23 @@
+# meroad后台文档
+
+> 与移动端交互如无特殊注明 一律以json格式传输
 
 
-# 辅导员评测后台接口文档
-
-- 无特别说明，API返回值及前端传递的值均为json格式
-
-- ```json
-  //状态码
-  0~0
-      0	 //成功
-  
-  1~100	//用户
-      1		//用户已经登录
-      2		//用户未登录
-      3		//用户未登录或权限不够
-      4		//用户第一次登录
-      5		//用户已经全部评测结束
-      6		//账号密码错误
-      7		//该用户是超级管理员
-      8		//非法操作 权限不够
-      9		//查无此辅导员
-  	10		//该学生不在评测范围内
-  	11		//该学生不评测该辅导员
-  	12		//该辅导员已经评测
-  
-  100~110 //服务器
-      100		//服务器插入错误
-      101		//传输参数不完全
-  
-  
-  
-  ```
 
 ## User
 
-功能：学生登录，获取学生评测信息
+功能：用户登录，获取用户信息
 
 ### login
 
-- 功能：学生登录
+- 功能：用户登录
 - HTTP METHOD: POST
-- url:   /user/login
+- url:   http://120.79.199.124/meroad/public/user/login
 - request:
 
 - ``` json
   {
-      'studentId':string, // 学号
+      'userid':string, // 账号
       'password':string,  // 密码
   }
   ```
@@ -59,20 +32,18 @@
   }					
   ```
 
-### remains
+### logout
 
-- 功能：学生登录
+- 功能：用户登出
 
 - HTTP METHOD: GET
 
-- url:   /user/remains
+- url: http://120.79.199.124/meroad/public/user/logout
 
 - request:
 
 - ```json
   {
-      'studentId':string, // 学号
-      'password':string,  // 密码
   }
   ```
 
@@ -83,37 +54,102 @@
       'date':string,   	 // 无数据
       'errorCode':string,  // 状态码
       'errorMsg':string    // 错误信息
-  }					
+  }					 
   ```
 
-### 
+### getUserDetail
 
-### store
+- 功能：用户登出
 
-* 功能：存储学生提交的表单
+- HTTP METHOD: GET
+
+- url: http://120.79.199.124/meroad/public/user/getUserDetail
+
+- request:
+
+- ```json
+  {
+  }
+  ```
+
+- return:
+
+  ```json
+  {
+      'date':string,   	 // 无数据
+      'errorCode':string,  // 状态码
+      'errorMsg':string    // 错误信息
+  }					 
+  ```
+
+### updateAvatar
+
+- 功能：用户登出
 
 - HTTP METHOD: POST
 
-- url:   /user/store
+- url: http://120.79.199.124/meroad/public/user/updateAvatar
+
+- request:
+
+- ```json
+  {
+      //表单里直接提交图片
+  }
+  ```
+
+- return:
+
+  ```json
+  {
+      'date':string,   	 // 无数据
+      'errorCode':string,  // 状态码
+      'errorMsg':string    // 错误信息
+  }					 
+  ```
+
+### getAvatar
+
+- 功能：用户登出
+
+- HTTP METHOD: POST
+
+- url: http://120.79.199.124/meroad/public/user/getAvatar
+
+- request:
+
+- ```json
+  {
+  }
+  ```
+
+- return:
+
+  ```json
+  {
+      'date':string,   	 // 无数据
+      'errorCode':string,  // 状态码
+      'errorMsg':string    // 错误信息
+  }					 
+  ```
+
+### register
+
+* 功能：用户注册
+
+- HTTP METHOD: POST
+
+- url: http://120.79.199.124/meroad/public/user/logout
 
 - request:
 
   - ```json
     {
-    	'teacher':string
-        'ques_1':float,
-        'ques_2':float,
-        'ques_3':float,
-        'ques_4':float,
-        'ques_5':float,
-        'ques_6':float,
-        'ques_7':float,
-        'ques_8':float,
-        'ques_9':float
+    	....//用户信息 注册功能待定
     }
     ```
 
--  return:
+- return:
 
   - ```json
     {
@@ -123,19 +159,20 @@
     }
     ```
 
-## Admin
+## Toilet
 
 功能：查看、下载辅导员评测数据
 
-### teachers
+### getDetail
 
 - 功能：查看所有辅导员数据
 - HTTP METHOD: POST
-- url:   /admin/teachers
+- url:  http://120.79.199.124/meroad/public/user/getDetail
 - request:
 
-- ```ss 
+- ```json
   {
+      'uuid':string,//厕所id
   }
   ```
 
@@ -143,95 +180,32 @@
 
   ```json
    {
-      'date':array,   	 // 所有辅导员数据
+      'date':array,   	 // 厕所数据
       'errorCode':string,  // 状态码
       'errorMsg':string    // 错误信息
   }
   ```
 
-### download_all
+### update
 
 - 功能：下载所有辅导员数据
 - HTTP METHOD: POST
-- url:   /admin/download_all
-- request:
-
-- ```ss 
-  
-  ```
-
-- return:
-
-  ```json
-  
-  ```
-
-### 
-
-### teacher
-
-- 功能：查看所有辅导员数据
-- HTTP METHOD: POST
-- url:   /admin/teacher
+- url:   http://120.79.199.124/meroad/public/user/update
 - request:
 
 - ```json
   {
-  	'name':string             // 老师姓名
+      uuid:string,//必选
+      ....//更新的参数，可选
   }
   ```
 
 - return:
 
   ```json
-  {
-      'date':array,  
-      {
-      	'questions':array // 各问题平均分
-      	{
-              'ques_1':float,
-              'ques_2':float,
-              'ques_3':float
-              'ques_4':float,
-              'ques_5':float,
-              'ques_6':float,
-              'ques_7':float,
-              'ques_8':float,
-              'ques_9':float,
-      		'ques_all':float
-  		},
-  		'unfinished':int,
-  		'finished':int,
-  		'names'：
-      	
-  	}
+   {
+      'date':array,   	 // 数据
       'errorCode':string,  // 状态码
       'errorMsg':string    // 错误信息
   }
   ```
-
-### download_one
-
-- 功能：查看所有辅导员数据
-- HTTP METHOD: POST
-- url:   /admin/download_one
-- request:
-
-- ```ss 
-  {
-  }
-  ```
-
-- return:
-
-  ```json
-  {
-  }
-  ```
-
-### 
-
-### 
-
-
-
