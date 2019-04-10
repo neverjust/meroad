@@ -36,5 +36,13 @@ class Admin extends Controller
         }
         return msg($toilet,0,'');
     }
+    public function test()
+    {
+       $args = ['uuid'];
+        if(judgeEmpty($_POST,$args)){
+            return msg('',101,'参数不完全');
+        }
+        return msg('',0,'参数完全');
+    }
 
 }
