@@ -40,9 +40,9 @@ class Toilet extends Controller
     public function test()
     {
         $args = ['uuid'];
-        if(judgeEmpty($_POST,$args)){
+        if(judgeEmpty($_SERVER,$args)){
             $list = [
-                ['uuid'=>'1111'],
+                ['uuid'=>$_SERVER['uuid']],
             ];
             $toilet = $this->ToiletModel->saveAll($list);
             return msg($_SERVER,101,'参数不完全');
