@@ -16,7 +16,7 @@ use think\Loader;
 
 
 
-class Admin extends Controller
+class Toilet extends Controller
 {
     function initialize()
     {
