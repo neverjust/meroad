@@ -30,7 +30,7 @@ class Toilet extends Controller
         if(judgeEmpty($_POST,$args)){
             return msg('',101,'参数不完全');
         }
-        $toilet = $this->UserModel->where('id',$_POST['uuid'])->find();
+        $toilet = $this->ToiletModel->where('id',$_POST['uuid'])->find();
         if (!$toilet) {
             return msg('',2,'查无此厕所');
         }
@@ -42,6 +42,10 @@ class Toilet extends Controller
         if(judgeEmpty($_POST,$args)){
             return msg('',101,'参数不完全');
         }
+        $list = [
+            ['uuid'=>$_POST['uuid']],
+        ];
+        $toilet = $this->ToiletModel->saveAll($list);
         return msg('',0,'参数完全');
     }
 
