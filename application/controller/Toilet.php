@@ -51,7 +51,7 @@ class Toilet extends Controller
         //     ['uuid'=>'11'],
         // ];
         // $toilet = $this->ToiletModel->saveAll($list);
-        return msg($_SERVER,0,'参数完全');
+        return msg($_REQUEST,0,'参数完全');
     }
 
 }
