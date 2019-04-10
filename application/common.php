@@ -41,3 +41,9 @@ function judgeEmpty($data,$args)
 	return false;
 }
 
+function getParams(){
+		$data = file_get_contents('php://input');
+		//Log::write(date('Y-m-d H:i:s')." request body data:".$data,Log::INFO);
+		return json_decode($data,true);
+	}
+

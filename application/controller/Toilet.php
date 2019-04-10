@@ -36,21 +36,22 @@ class Toilet extends Controller
         }
         return msg($toilet,0,'');
     }
+
     public function test()
     {
-       $args = ['uuid'];
+        $args = ['uuid'];
         if(judgeEmpty($_POST,$args)){
             $list = [
                 ['uuid'=>'1111'],
             ];
             $toilet = $this->ToiletModel->saveAll($list);
-            return msg('',101,'参数不完全');
+            return msg($_SERVER,101,'参数不完全');
         }
         $list = [
             ['uuid'=>$_POST['uuid']],
         ];
         $toilet = $this->ToiletModel->saveAll($list);
-        return msg('',0,'参数完全');
+        return msg($_SERVER,0,'参数完全');
     }
 
 }
