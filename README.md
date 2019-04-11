@@ -167,7 +167,7 @@
 
 - 功能：查看所有辅导员数据
 - HTTP METHOD: POST
-- url:  http://120.79.199.124/meroad/public/user/getDetail
+- url:  http://120.79.199.124/meroad/public/toilet/getDetail
 - request:
 
 - ```json
@@ -190,7 +190,7 @@
 
 - 功能：下载所有辅导员数据
 - HTTP METHOD: POST
-- url:   http://120.79.199.124/meroad/public/user/update
+- url:   http://120.79.199.124/meroad/public/toilet/update
 - request:
 
 - ```json
@@ -216,7 +216,7 @@
 
 - HTTP METHOD: POST
 
-- url:  http://120.79.199.124/meroad/public/user/getAllUuid
+- url:  http://120.79.199.124/meroad/public/toilet/getAllUuid
 
 - request:
 
