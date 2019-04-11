@@ -61,19 +61,22 @@ class Toilet extends Controller
 
     public function update()
     {
-        // $args = ['uuid'];
-        // if(judgeEmpty($_SERVER,$args)){
-        //     $list = [
-        //         ['uuid'=>$_SERVER['uuid']],
-        //     ];
-        //     $toilet = $this->ToiletModel->saveAll($list);
-        //     return msg($_SERVER,101,'参数不完全');
-        // }
-        // $list = [
-        //     ['uuid'=>'11'],
-        // ];
-        // $toilet = $this->ToiletModel->saveAll($list);
-        return msg($_SERVER,0,'参数完全');
+        $data = getParms();
+        $args = ['uuid'];
+        if(judgeEmpty($data,$args)){
+            return msg($data,101,'参数不完全');
+        }
+        $toilet = $this->ToiletModel->find('uuid',$data['uuid']);
+        if (!$toilet)
+            return msg('',1,'该厕所不存在');
+        isset($data['longitude'])&&$toilet['Lng']=$data['longitude'];
+        isset($data['latitude'])&&$toilet['Lat']=$data['latitude'];
+        isset($data['spareHolesNumber'])&&$toilet['spareHoles']=$data['spareHolesNumber'];
+        isset($data['allHolesNumber"'])&&$toilet['allHoles']=$data['allHolesNumber'];
+        isset($data['hygieneLevel'])&&$toilet['clean']=$data['hygieneLevel'];
+        isset($data['userEvaluation'])&&$toilet['evaluation']=$data['userEvaluation'];
+        $data->save();
+        return msg('',0,'');
     }
 
 }
