@@ -26,11 +26,13 @@ class Toilet extends Controller
     }
     public function getDetail()
     {
+        $data = getParms();
         $args = ['uuid'];
-        if(judgeEmpty($_POST,$args)){
-            return msg('',101,'参数不完全');
+        if(judgeEmpty($data,$args)){
+            return msg($data,101,'参数不完全');
         }
-        $toilet = $this->ToiletModel->where('id',$_POST['uuid'])->find();
+
+        $toilet = $this->ToiletModel->where('uuid',$data['uuid'])->find();
         if (!$toilet) {
             return msg('',2,'查无此厕所');
         }
@@ -74,7 +76,7 @@ class Toilet extends Controller
         if(!empty($data['allholesnumber'])) $toilet['spareHoles']=$data['allholesnumber'];
         if(!empty($data['spareholesnumber'])) $toilet['allHoles']=$data['spareholesnumber'];
         if(!empty($data['hygienelevel'])) $toilet['clean']=$data['hygienelevel'];
-        if(!empty($data['userevaluation '])) $toilet['evaluation']=$data['userevaluation'];
+        if(!empty($data['userevaluations'])) $toilet['evaluation']=$data['userevaluation'];
         $toilet->save();
         return msg($toilet,0,'请求成功');
     }
