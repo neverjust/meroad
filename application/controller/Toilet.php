@@ -71,12 +71,12 @@ class Toilet extends Controller
             return msg($data['uuid'],1,'该厕所不存在');
         if(!empty($data['longitude'])) $toilet['Lng']=$data['longitude'];
         if(!empty($data['latitude'])) $toilet['Lat']=$data['latitude'];
-        if(!empty($data['spareHolesNumber'])) $toilet['spareHoles']=$data['spareHolesNumber'];
-        if(!empty($data['allHolesNumber"'])) $toilet['allHoles']=$data['allHolesNumber'];
-        if(!empty($data['hygieneLevel'])) $toilet['clean']=$data['hygieneLevel'];
-        if(!empty($data['userEvaluation'])) $toilet['evaluation']=$data['userEvaluation'];
+        if(!empty($data['allholesnumber'])) $toilet['spareHoles']=$data['allholesnumber'];
+        if(!empty($data['spareholesnumber'])) $toilet['allHoles']=$data['spareholesnumber'];
+        if(!empty($data['hygienelevel'])) $toilet['clean']=$data['hygienelevel'];
+        if(!empty($data['userevaluation '])) $toilet['evaluation']=$data['userevaluation'];
         $toilet->save();
-        return msg($data,0,'请求成功');
+        return msg($toilet,0,'请求成功');
     }
 
 }
