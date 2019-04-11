@@ -68,7 +68,7 @@ class Toilet extends Controller
         }
         $toilet = $this->ToiletModel->find('uuid',$data['uuid']);
         if (!$toilet)
-            return msg($data,1,'该厕所不存在');
+            return msg($data['uuid'],1,'该厕所不存在');
         isset($data['longitude'])&&$toilet['Lng']=$data['longitude'];
         isset($data['latitude'])&&$toilet['Lat']=$data['latitude'];
         isset($data['spareHolesNumber'])&&$toilet['spareHoles']=$data['spareHolesNumber'];
