@@ -37,7 +37,7 @@ class Toilet extends Controller
             return msg('',2,'查无此厕所');
         }
         $result['uuid'] = $toilet['uuid'];
-        $result['longtitude'] = $toilet['Lng'];
+        $result['longitude'] = $toilet['Lng'];
         $result['latitude'] = $toilet['Lat'];
         $result['spareHolesNumber'] = $toilet['spareHoles'];
         $result['allHolesNumber'] = $toilet['allHoles'];
