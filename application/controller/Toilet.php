@@ -76,7 +76,7 @@ class Toilet extends Controller
         isset($data['hygieneLevel'])&&$toilet['clean']=$data['hygieneLevel'];
         isset($data['userEvaluation'])&&$toilet['evaluation']=$data['userEvaluation'];
         $toilet->save();
-        return msg('',0,'');
+        return msg($toilet,0,'请求成功');
     }
 
 }
