@@ -36,7 +36,14 @@ class Toilet extends Controller
         if (!$toilet) {
             return msg('',2,'查无此厕所');
         }
-        return msg($toilet,0,'');
+        $result['uuid'] = $toilet['uuid'];
+        $result['longtitude'] = $toilet['Lng'];
+        $result['latitude'] = $toilet['Lat'];
+        $result['spareHolesNumber'] = $toilet['spareHoles'];
+        $result['allHolesNumber'] = $toilet['allHoles'];
+        $result['hygieneLevel'] = $toilet['clean'];
+        $result['userEvaluation'] = $toilet['evaluation'];
+        return msg($result,0,'');
     }
     public function getAllUuid(){
         $data =  $this->ToiletModel->column('uuid');
