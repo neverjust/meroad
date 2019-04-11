@@ -76,7 +76,7 @@ class Toilet extends Controller
         if(!empty($data['hygieneLevel'])) $toilet['clean']=$data['hygieneLevel'];
         if(!empty($data['userEvaluation'])) $toilet['evaluation']=$data['userEvaluation'];
         $toilet->save();
-        return msg($toilet,0,'请求成功');
+        return msg($data,0,'请求成功');
     }
 
 }
