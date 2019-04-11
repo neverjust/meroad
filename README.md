@@ -209,3 +209,30 @@
       'errorMsg':string    // 错误信息
   }
   ```
+
+### getAllUuid
+
+- 功能：查看所有辅导员数据
+
+- HTTP METHOD: POST
+
+- url:  http://120.79.199.124/meroad/public/user/getAllUuid
+
+- request:
+
+- ```json
+  {
+  }
+  ```
+
+- return:
+
+  ```json
+   {
+      'date':array,   	 // 厕所数据
+      'errorCode':string,  // 状态码
+      'errorMsg':string    // 错误信息
+  }
+  ```
+
+### 
