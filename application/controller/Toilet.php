@@ -36,6 +36,10 @@ class Toilet extends Controller
         }
         return msg($toilet,0,'');
     }
+    public function getAllUuid(){
+        $data =  $this->ToiletModel->column('uuid');
+        return msg($data,0,'');
+    }
 
     public function test()
     {
