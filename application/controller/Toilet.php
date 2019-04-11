@@ -69,12 +69,12 @@ class Toilet extends Controller
         $toilet = $this->ToiletModel->where('uuid',$data['uuid'])->find();
         if (!$toilet)
             return msg($data['uuid'],1,'该厕所不存在');
-        isset($data['longitude'])&&$toilet['Lng']=$data['longitude'];
-        isset($data['latitude'])&&$toilet['Lat']=$data['latitude'];
-        isset($data['spareHolesNumber'])&&$toilet['spareHoles']=$data['spareHolesNumber'];
-        isset($data['allHolesNumber"'])&&$toilet['allHoles']=$data['allHolesNumber'];
-        isset($data['hygieneLevel'])&&$toilet['clean']=$data['hygieneLevel'];
-        isset($data['userEvaluation'])&&$toilet['evaluation']=$data['userEvaluation'];
+        !empty($data['longitude'])&&$toilet['Lng']=$data['longitude'];
+        !empty($data['latitude'])&&$toilet['Lat']=$data['latitude'];
+        !empty($data['spareHolesNumber'])&&$toilet['spareHoles']=$data['spareHolesNumber'];
+        !empty($data['allHolesNumber"'])&&$toilet['allHoles']=$data['allHolesNumber'];
+        !empty($data['hygieneLevel'])&&$toilet['clean']=$data['hygieneLevel'];
+        !empty($data['userEvaluation'])&&$toilet['evaluation']=$data['userEvaluation'];
         $toilet->save();
         return msg($toilet,0,'请求成功');
     }
