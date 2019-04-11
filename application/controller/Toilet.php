@@ -75,7 +75,7 @@ class Toilet extends Controller
         isset($data['allHolesNumber"'])&&$toilet['allHoles']=$data['allHolesNumber'];
         isset($data['hygieneLevel'])&&$toilet['clean']=$data['hygieneLevel'];
         isset($data['userEvaluation'])&&$toilet['evaluation']=$data['userEvaluation'];
-        $data->save();
+        $toilet->save();
         return msg('',0,'');
     }
 
