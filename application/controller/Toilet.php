@@ -55,6 +55,23 @@ class Toilet extends Controller
         //     ['uuid'=>'11'],
         // ];
         // $toilet = $this->ToiletModel->saveAll($list);
+        return msg($_SERVER,0,'参数完全');
+    }
+
+    public function update()
+    {
+        // $args = ['uuid'];
+        // if(judgeEmpty($_SERVER,$args)){
+        //     $list = [
+        //         ['uuid'=>$_SERVER['uuid']],
+        //     ];
+        //     $toilet = $this->ToiletModel->saveAll($list);
+        //     return msg($_SERVER,101,'参数不完全');
+        // }
+        // $list = [
+        //     ['uuid'=>'11'],
+        // ];
+        // $toilet = $this->ToiletModel->saveAll($list);
         return msg($_REQUEST,0,'参数完全');
     }
 
