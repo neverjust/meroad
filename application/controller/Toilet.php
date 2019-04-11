@@ -43,19 +43,20 @@ class Toilet extends Controller
 
     public function test()
     {
-        // $args = ['uuid'];
-        // if(judgeEmpty($_SERVER,$args)){
-        //     $list = [
-        //         ['uuid'=>$_SERVER['uuid']],
-        //     ];
-        //     $toilet = $this->ToiletModel->saveAll($list);
-        //     return msg($_SERVER,101,'参数不完全');
-        // }
-        // $list = [
-        //     ['uuid'=>'11'],
-        // ];
-        // $toilet = $this->ToiletModel->saveAll($list);
-        return msg($_SERVER,0,'参数完全');
+        $data = getParms();
+        $args = ['uuid'];
+        if(judgeEmpty($data,$args)){
+            $list = [
+                ['uuid'=>111],
+            ];
+            $toilet = $this->ToiletModel->saveAll($list);
+            return msg($data,101,'参数不完全');
+        }
+        $list = [
+            ['uuid'=>$data['uuid']],
+        ];
+        $toilet = $this->ToiletModel->saveAll($list);
+        return msg($data,0,'参数完全');
     }
 
     public function update()
@@ -72,7 +73,7 @@ class Toilet extends Controller
         //     ['uuid'=>'11'],
         // ];
         // $toilet = $this->ToiletModel->saveAll($list);
-        return msg($_REQUEST,0,'参数完全');
+        return msg($_SERVER,0,'参数完全');
     }
 
 }

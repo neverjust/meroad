@@ -41,3 +41,14 @@ function judgeEmpty($data,$args)
 	return false;
 }
 
+
+function getParms(){
+	foreach ($_SERVER as $key => $value) {
+		if (substr($key,0,5)=="HTTP_") {
+			$new_key = strtolower(substr($key,5));
+			$result[$new_key]=$value;
+		}
+	}
+	return $result;
+}
+
