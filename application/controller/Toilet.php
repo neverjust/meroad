@@ -73,15 +73,15 @@ class Toilet extends Controller
         $data = getParms();
         $args = ['uuid'];
         if(judgeEmpty($data,$args)){
-            return msg($data,101,'参数不完全');
+            return msg($data,101,nec);
         }
         $toilet = $this->ToiletModel->where('uuid',$data['uuid'])->find();
         if (!$toilet)
             return msg($data['uuid'],1,'该厕所不存在');
         if(!empty($data['longitude'])) $toilet['Lng']=$data['longitude'];
         if(!empty($data['latitude'])) $toilet['Lat']=$data['latitude'];
-        if(!empty($data['allholesnumber'])) $toilet['spareHoles']=$data['allholesnumber'];
-        if(!empty($data['spareholesnumber'])) $toilet['allHoles']=$data['spareholesnumber'];
+        if(!empty($data['allholesnumber'])) $toilet['allHoles']=$data['allholesnumber'];
+        if(!empty($data['spareholesnumber'])) $toilet['spareHoles']=$data['spareholesnumber'];
         if(!empty($data['hygienelevel'])) $toilet['clean']=$data['hygienelevel'];
         if(!empty($data['userevaluation'])) $toilet['evaluation']=$data['userevaluation'];
         $toilet->save();
