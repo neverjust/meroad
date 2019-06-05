@@ -73,7 +73,7 @@ class Toilet extends Controller
         $data = getParms();
         $args = ['uuid'];
         if(judgeEmpty($data,$args)){
-            return msg($data,101,nec);
+            return msg($data,101,'参数不完全');
         }
         $toilet = $this->ToiletModel->where('uuid',$data['uuid'])->find();
         if (!$toilet)
