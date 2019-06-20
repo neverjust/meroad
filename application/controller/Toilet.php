@@ -86,8 +86,8 @@ class Toilet extends Controller
         if(isset($data['spareholesnumber'])) $toilet['spareHoles']=$data['spareholesnumber'];
         if(isset($data['hygienelevel'])) $toilet['clean']=$data['hygienelevel'];
         if(isset($data['userevaluation'])) $toilet['evaluation']=$data['userevaluation'];
-        if(isset($data['evaluationNum'])) $toilet['evaluationNum']=$data['evaluationNum'];
-        if(isset($data['leftPaper'])) $toilet['leftPaper']=$data['leftPaper'];
+        if(isset($data['evaluationnum'])) $toilet['evaluationnum']=$data['evaluationnum'];
+        if(isset($data['leftpaper'])) $toilet['leftPaper']=$data['leftpaper'];
         $toilet->save();
         return msg($toilet,0,'请求成功');
     }
