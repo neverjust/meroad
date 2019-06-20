@@ -43,6 +43,8 @@ class Toilet extends Controller
         $result['allHolesNumber'] = $toilet['allHoles'];
         $result['hygieneLevel'] = $toilet['clean'];
         $result['userEvaluation'] = $toilet['evaluation'];
+        $result['evaluationNum'] = $toilet['evaluationNum'];
+        $result['leftPaper'] = $toilet['leftPaper'];
         return msg($result,0,'');
     }
     public function getAllUuid(){
@@ -84,6 +86,8 @@ class Toilet extends Controller
         if(isset($data['spareholesnumber'])) $toilet['spareHoles']=$data['spareholesnumber'];
         if(isset($data['hygienelevel'])) $toilet['clean']=$data['hygienelevel'];
         if(isset($data['userevaluation'])) $toilet['evaluation']=$data['userevaluation'];
+        if(isset($data['evaluationNum'])) $toilet['evaluationNum']=$data['evaluationNum'];
+        if(isset($data['leftPaper'])) $toilet['leftPaper']=$data['leftPaper'];
         $toilet->save();
         return msg($toilet,0,'请求成功');
     }
